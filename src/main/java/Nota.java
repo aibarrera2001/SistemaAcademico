@@ -52,3 +52,29 @@ public class Nota {
     private void recalcular() {
         this.definitiva = calcularDefinitiva();
 }
+    
+    // ══════════════════════════════════════════════════════════════════════════
+    //  CRUD NOTA
+    // ══════════════════════════════════════════════════════════════════════════
+
+    public static void registrarNota() {
+        System.out.println("\n── Registrar Nota ────────────────────────");
+        System.out.print("  Código del estudiante  : "); String codEst = sc.nextLine().trim();
+        if (!existeEstudiante(codEst)) {
+            System.out.println("  ✖ Estudiante no encontrado.");
+            return;
+        }
+        System.out.print("  Código de la asignatura: "); String codAsig = sc.nextLine().trim();
+        if (!existeAsignatura(codAsig)) {
+            System.out.println("  ✖ Asignatura no encontrada.");
+            return;
+        }
+        System.out.print("  Nota 1 (0.0 - 5.0): "); double n1 = leerDouble();
+        System.out.print("  Nota 2 (0.0 - 5.0): "); double n2 = leerDouble();
+        System.out.print("  Nota 3 (0.0 - 5.0): "); double n3 = leerDouble();
+
+        Nota nueva = new Nota(contadorNotas++, codEst, codAsig, n1, n2, n3);
+        notas.add(nueva);
+        System.out.println("  ✔ Nota registrada. Definitiva: " + String.format("%.2f", nueva.getDefinitiva()));
+    }
+}
