@@ -75,4 +75,23 @@ public class SistemaAcademico {
 
         System.out.println("  ✔ Asignatura actualizada exitosamente.");
     }
+        
+         public static void eliminarAsignatura() {
+        System.out.println("\n── Eliminar Asignatura ───────────────────");
+        System.out.print("  Código de la asignatura a eliminar: ");
+        String codigo = sc.nextLine().trim();
+        Asignatura a = obtenerAsignatura(codigo);
+        if (a == null) {
+            System.out.println("  ✖ Asignatura no encontrada.");
+            return;
+        }
+        System.out.print("  ¿Confirmar eliminación de " + a.getNombre() + "? (s/n): ");
+        String conf = sc.nextLine().trim();
+        if (conf.equalsIgnoreCase("s")) {
+            asignaturas.remove(a);
+            System.out.println("  ✔ Asignatura eliminada exitosamente.");
+        } else {
+            System.out.println("  Operación cancelada.");
+        }
+    }
     }
