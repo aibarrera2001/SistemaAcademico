@@ -101,4 +101,28 @@ public class Nota {
             System.out.println("  ✖ Nota no encontrada.");
         }
     }
+    
+        public static void actualizarNota() {
+        System.out.println("\n── Actualizar Nota ───────────────────────");
+        System.out.print("  ID de la nota a actualizar: ");
+        int id = leerEntero("");
+        Nota n = obtenerNota(id);
+        if (n == null) {
+            System.out.println("  ✖ Nota no encontrada.");
+            return;
+        }
+        System.out.println("  (Enter para mantener el valor actual)");
+        System.out.print("  Nueva Nota 1 [" + n.getNota1() + "]: ");
+        String s1 = sc.nextLine().trim();
+        System.out.print("  Nueva Nota 2 [" + n.getNota2() + "]: ");
+        String s2 = sc.nextLine().trim();
+        System.out.print("  Nueva Nota 3 [" + n.getNota3() + "]: ");
+        String s3 = sc.nextLine().trim();
+
+        if (!s1.isEmpty()) n.setNota1(Double.parseDouble(s1));
+        if (!s2.isEmpty()) n.setNota2(Double.parseDouble(s2));
+        if (!s3.isEmpty()) n.setNota3(Double.parseDouble(s3));
+
+        System.out.println("  ✔ Nota actualizada. Nueva definitiva: " + String.format("%.2f", n.getDefinitiva()));
+    }
 }
