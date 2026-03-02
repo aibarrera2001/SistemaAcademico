@@ -125,4 +125,23 @@ public class Nota {
 
         System.out.println("  ✔ Nota actualizada. Nueva definitiva: " + String.format("%.2f", n.getDefinitiva()));
     }
+        
+        public static void eliminarNota() {
+        System.out.println("\n── Eliminar Nota ─────────────────────────");
+        System.out.print("  ID de la nota a eliminar: ");
+        int id = leerEntero("");
+        Nota n = obtenerNota(id);
+        if (n == null) {
+            System.out.println("  ✖ Nota no encontrada.");
+            return;
+        }
+        System.out.print("  ¿Confirmar eliminación de la nota ID " + id + "? (s/n): ");
+        String conf = sc.nextLine().trim();
+        if (conf.equalsIgnoreCase("s")) {
+            notas.remove(n);
+            System.out.println("  ✔ Nota eliminada exitosamente.");
+        } else {
+            System.out.println("  Operación cancelada.");
+        }
+    }
 }
