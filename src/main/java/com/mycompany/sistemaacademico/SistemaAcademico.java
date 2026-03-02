@@ -51,4 +51,28 @@ public class SistemaAcademico {
             System.out.println("  ✖ Asignatura no encontrada.");
         }
     }
+    
+        public static void actualizarAsignatura() {
+        System.out.println("\n── Actualizar Asignatura ─────────────────");
+        System.out.print("  Código de la asignatura a actualizar: ");
+        String codigo = sc.nextLine().trim();
+        Asignatura a = obtenerAsignatura(codigo);
+        if (a == null) {
+            System.out.println("  ✖ Asignatura no encontrada.");
+            return;
+        }
+        System.out.println("  (Enter para mantener el valor actual)");
+        System.out.print("  Nuevo nombre [" + a.getNombre() + "]: ");
+        String nombre = sc.nextLine().trim();
+        System.out.print("  Nuevos créditos [" + a.getCreditos() + "]: ");
+        String cred = sc.nextLine().trim();
+        System.out.print("  Nuevo docente [" + a.getDocente() + "]: ");
+        String docente = sc.nextLine().trim();
+
+        if (!nombre.isEmpty())  a.setNombre(nombre);
+        if (!cred.isEmpty())    a.setCreditos(Integer.parseInt(cred));
+        if (!docente.isEmpty()) a.setDocente(docente);
+
+        System.out.println("  ✔ Asignatura actualizada exitosamente.");
+    }
     }
