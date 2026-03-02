@@ -77,4 +77,28 @@ public class Nota {
         notas.add(nueva);
         System.out.println("  ✔ Nota registrada. Definitiva: " + String.format("%.2f", nueva.getDefinitiva()));
     }
+    
+        public static void listarNotas() {
+        System.out.println("\n── Lista de Notas ────────────────────────");
+        if (notas.isEmpty()) {
+            System.out.println("  No hay notas registradas.");
+            return;
+        }
+        for (Nota n : notas) {
+            System.out.println(n);
+        }
+        System.out.println("  Total: " + notas.size() + " nota(s).");
+    }
+
+    public static void buscarNota() {
+        System.out.println("\n── Buscar Nota ───────────────────────────");
+        System.out.print("  ID de la nota: ");
+        int id = leerEntero("");
+        Nota n = obtenerNota(id);
+        if (n != null) {
+            System.out.println(n);
+        } else {
+            System.out.println("  ✖ Nota no encontrada.");
+        }
+    }
 }
